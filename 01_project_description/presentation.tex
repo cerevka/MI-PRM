@@ -1,0 +1,185 @@
+\documentclass[10pt]{beamer}
+\usetheme[
+%%% options passed to the outer theme
+%    hidetitle,           % hide the (short) title in the sidebar
+%    hideauthor,          % hide the (short) author in the sidebar
+%    hideinstitute,       % hide the (short) institute in the bottom of the sidebar
+%    shownavsym,          % show the navigation symbols
+%    width=2cm,           % width of the sidebar (default is 2 cm)
+%    hideothersubsections,% hide all subsections but the subsections in the current section
+%    hideallsubsections,  % hide all subsections
+%%% options passed to the color theme
+%    lightheaderbg        % use a light header background
+  ]{aausidebar}
+  
+\usepackage[utf8]{inputenc}
+\usepackage[czech]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+% colored hyperlinks
+\newcommand{\chref}[2]{
+  \href{#1}{{\usebeamercolor[bg]{aau sidebar}#2}}
+}
+
+\title[Document Management System]{Document Management System}
+
+\subtitle{Popis projektu}
+
+\author[Tomáš Čerevka] {
+  Tomáš Čerevka, Adam Činčura, Jan Kadlec, Kamil Šnajdr \\
+  {\tt cerevtom, cincuada, kadlej16, snajdkam}
+}
+
+\institute[ČVUT FIT] {
+  Fakulta informačních technologií \\
+  České vysoké učení technické \\
+  Praha
+}
+\date[\today]{
+Projektové manažerství \\
+{\normalsize 24. února 2012}
+}
+
+\begin{document}
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+\begin{frame}{Osnova}{}
+	\tableofcontents
+\end{frame}
+
+\section{Identifikace projektu}
+
+\begin{frame}{Identifikace projektu}
+	
+	\begin{block}{Předmět}
+		Systém pro správu odchozích a příchozích faktur.
+	\end{block}
+			
+	\begin{block}{Fáze}
+		\begin{itemize}
+			\item Analýza stávajících procesů.
+			\item Vytvoření systému.
+			\item Zaškolení zaměstnanců.
+			\item Testovací provoz.
+			\item Nasazení do produkčního prostředí.
+			\item Údržba systému.
+			\item Zhodnocení.
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\section{Cílové skupiny}
+
+\begin{frame}{Cílové skupiny}
+	\begin{itemize}
+		\item Interní
+			\begin{itemize}
+				\item IT oddělení \\ \textit{vytvoření systému a jeho údržba} \vspace{1em}
+				\item Učetní oddělení \\ \textit{využívání systému} \vspace{1em}
+				\item Management \\ \textit{přehled o financích a cash flow} \vspace{1em}
+			\end{itemize}
+		\item Externí
+			\begin{itemize}
+				\item Dodavatelé \vspace{1em}
+				\item Odběratelé
+			\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\section{Výchozí podmínky}
+
+\begin{frame}{Výchozí podmínky}
+
+	Velké množství vystavovaných a přijímaných faktur:
+	
+	\begin{itemize}
+		\item zbytečné papírování
+		\item ztrácení faktur
+		\item placení po splatnosti
+		\item málo přehledné
+	\end{itemize}
+\end{frame}
+
+\section{Cíle projektu}
+
+\subsection*{Časová úspora}
+
+\begin{frame}{Cíle projektu}{Časová úspora}
+	\begin{itemize}
+		\item \textbf{Cíl:} Zrychlení vnitropodnikových procesů.
+		\item \textbf{Váha:} 20 \%
+		\item \textbf{Indikátor:} Žádné faktury po splatnosti.
+		\item \textbf{Způsob měření:} Měsíčně.
+		\item \textbf{Metrika:} Počet faktur po splatnosti.
+	\end{itemize}
+\end{frame}
+
+\subsection*{Casch flow}
+
+\begin{frame}{Cíle projektu}{Casch flow}
+	\begin{itemize}
+		\item \textbf{Cíl:} Zpřehlednění aktuální finanční situace společnosti (casch flow).
+		\item \textbf{Váha:} 20 \%
+		\item \textbf{Indikátor:} Zcela automatizované generování reportů.
+		\item \textbf{Způsob měření:} Měsíc po nazasení.
+		\item \textbf{Metrika:} Náklady pro měření casch flow.
+	\end{itemize}
+\end{frame}
+
+\subsection*{Učetnictví}
+
+\begin{frame}{Cíle projektu}{Učetnictví}
+	\begin{itemize}
+		\item \textbf{Cíl:} Zmenšení zátěže učetního oddělení provázáním fakturačního systému s učetním systémem.
+		\item \textbf{Váha:} 30 \%
+		\item \textbf{Indikátor:} 
+			\begin{enumerate}
+				\item Žádné přesčasy.
+				\item Redukce učetního oddělení minimálně o 20 \%.
+			\end{enumerate}
+		\item \textbf{Způsob měření:} 
+			\begin{enumerate}
+				\item Měsíčně.
+				\item 2 měsíce po nasazení.
+			\end{enumerate}
+		\item \textbf{Metrika:}
+			\begin{enumerate}
+				\item Počet odpracovaných hodin.
+				\item Počet učetních.
+		\end{enumerate}
+	\end{itemize}
+\end{frame}
+
+\subsection*{Dobré vztahy s obchodními partnery}
+
+\begin{frame}{Cíle projektu}{Dobré vztahy s obchodními partnery}
+	\begin{itemize}
+		\item \textbf{Cíl:} Včasné, rychlé a bezchybné vyřizování faktur.
+		\item \textbf{Váha:} 20 \%
+		\item \textbf{Indikátor:} Metrika $\leqq$ 2
+		\item \textbf{Způsob měření:} Dotazník
+		\item \textbf{Metrika:} 1 (výborné) - 5 (nedostatečně)
+	\end{itemize}
+\end{frame}
+
+\subsection*{Životní prostředí}
+
+\begin{frame}{Cíle projektu}{Životní prostředí}
+	\begin{itemize}
+		\item \textbf{Cíl:} Zlepšení ochrany životního prostředí digitalizací dokumentů.
+		\item \textbf{Váha:} 10 \%
+		\item \textbf{Indikátor:} Snížení spotřeby papíru.
+		\item \textbf{Způsob měření:} Náklady na tisk rok po nasazení.
+		\item \textbf{Metrika:} Náklady na tisk.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Poděkování}
+	\begin{block}{Děkuji za pozornost.}
+	\end{block}
+\end{frame}
+
+\end{document}
