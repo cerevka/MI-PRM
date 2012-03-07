@@ -1,0 +1,186 @@
+\documentclass[10pt]{beamer}
+\usetheme[
+%%% options passed to the outer theme
+%    hidetitle,           % hide the (short) title in the sidebar
+%    hideauthor,          % hide the (short) author in the sidebar
+%    hideinstitute,       % hide the (short) institute in the bottom of the sidebar
+%    shownavsym,          % show the navigation symbols
+%    width=2cm,           % width of the sidebar (default is 2 cm)
+%    hideothersubsections,% hide all subsections but the subsections in the current section
+%    hideallsubsections,  % hide all subsections
+%%% options passed to the color theme
+%    lightheaderbg        % use a light header background
+  ]{aausidebar}
+  
+\usepackage[utf8]{inputenc}
+\usepackage[czech]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+% colored hyperlinks
+\newcommand{\chref}[2]{
+  \href{#1}{{\usebeamercolor[bg]{aau sidebar}#2}}
+}
+
+\title[Document Management System]{Document Management System}
+
+\subtitle{Studie proveditelnosti: CBA, ROI}
+
+\author[Kamil Šnajdr] {
+  Tomáš Čerevka, Adam Činčura, Jan Kadlec, Kamil Šnajdr \\
+  {\tt cerevtom, cincuada, kadlej16, snajdkam}
+}
+
+\institute[ČVUT FIT] {
+  Fakulta informačních technologií \\
+  České vysoké učení technické \\
+  Praha
+}
+\date[\today]{
+Projektové manažerství \\
+{\normalsize 9. března 2012}
+}
+
+\begin{document}
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+\begin{frame}{Osnova}
+	\tableofcontents
+\end{frame}
+
+\section{Rekapitulace}
+
+\subsection{Současná situace}
+
+\begin{frame}{Rekapitulace}{Současná situace}	
+		
+  \begin{block}{O společnosti}
+    \begin{itemize}
+			\item Malá firma specializující se na audit.
+		\end{itemize}
+	\end{block}
+			
+	\begin{block}{Problémy}
+		\begin{itemize}
+			\item Pozdní placení faktur, ztrácení faktur.
+			\item Zbytečné papírování.
+			\item Neefektivní činnost účetního oddělení.
+		\end{itemize}
+	\end{block}
+	
+		\begin{block}{Řešení}
+		\begin{itemize}
+			\item Document Management System.
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\subsection{Zvolené řešení}
+
+\begin{frame}{Rekapitulace}{Zvolené řešení}	
+	\begin{block}{Box.com}
+		\begin{itemize}
+			\item Komerční webová aplikace.
+			\item Snadné nasazení, používání i údržba.
+		\end{itemize}
+	\end{block}
+	
+	\begin{block}{Přínosy}
+		\begin{itemize}
+			\item Automatické sledování stavu nevyřízených faktur.
+			\item Usnadnění práce účetnímu oddělení.
+			\item Zpřehlednění finanční situace firmy.
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\section[CBA]{Cost-Benefit Analysis}
+
+\begin{frame}{Cost-Benefit Analysis}
+  
+   \begin{block}{Náklady} \small
+      \begin{tabular}{ | l @{\hspace{9mm}}| r r | }
+        \hline
+        Licence na SW & \multicolumn{2}{|r|}{9\,000 Kč/měsíc} \\
+        Nákup HW (skenery) & \multicolumn{2}{|r|}{20\,000 Kč} \\
+        Zavedení systému a školení & \multicolumn{2}{|r|}{10\,000 Kč} \\
+        Digitalizace stávajících dokumentů & \multicolumn{2}{|r|}{40\,000 Kč} \\
+        \hline \hline
+        \textbf{Náklady celkem} & jednorázově & \textbf{70\,000 Kč} \\
+        & měsíčně & \textbf{9\,000 Kč} \\
+        \hline
+      \end{tabular}
+  \end{block}
+  
+   \begin{block}{Užitky} \small
+      \begin{tabular}{ | l | r r | }
+        \hline
+        Zamezení finančním ztrátám  & \multicolumn{2}{|r|}{20\,000 Kč/měsíc} \\
+        Zefektivnění práce účetního oddělení o 30\%  & \multicolumn{2}{|r|}{10\,000 Kč/měsíc} \\
+        Snížení nákladů na tisk  & \multicolumn{2}{|r|}{5\,000 Kč/měsíc} \\
+        \hline \hline
+        \textbf{Užitky celkem} & měsíčně & \textbf{35\,000 Kč} \\
+        \hline
+      \end{tabular}
+  \end{block}
+ 
+\end{frame}
+
+\section{ROI}
+
+\begin{frame}{ROI} 
+  \begin{center} \footnotesize
+    \begin{tabular}{ | l | r | r | r | }
+          \hline
+          & \textbf{Rok 1} & \textbf{Rok 2} & \textbf{Rok 3} \\
+          \hline \hline
+          \textbf{Náklady} & & & \\
+          \hline
+          Licence SW & 108\,000,- & 108\,000,- & 108\,000,- \\
+          \hline
+          Nákup HW & 20\,000,- & 0,- & 0,- \\
+          \hline
+          Nasazení, školení & 10\,000,- & 0,- & 0,- \\
+          \hline
+          Digitalizace dokumentů & 40\,000,- & 0,- & 0,-\\
+          \hline \hline 
+          \textbf{Náklady celkem} & \textbf{\textcolor{red}{178\,000,-}} & \textbf{\textcolor{red}{286\,000,-}} & 
+                                    \textbf{\textcolor{red}{394\,000,-}} \\
+          \hline
+          \multicolumn{4}{r}{} \\
+          \hline
+          \textbf{Užitky} & & &\\
+          \hline
+          Zamezení finančním ztrátám  & 240\,000,- & 240\,000,- & 240\,000,- \\
+          \hline
+          Efektivnější práce & 120\,000,- & 120\,000,- & 120\,000,- \\
+          \hline
+          Nižší náklady na tisk  & 60\,000,- & 60\,000,- & 60\,000,- \\
+          \hline \hline
+          \textbf{Užitky celkem} & \textbf{\textcolor{green}{420\,000,-}} & \textbf{\textcolor{green}{840\,000,-}} & 
+                              \textbf{\textcolor{green}{1\,260\,000,-}} \\ 
+          \hline 
+          \multicolumn{4}{r}{} \\
+          \hline
+          \textbf{Zisk}  & \textbf{\textcolor{green}{242\,000,-}} & \textbf{\textcolor{green}{554\,000,-}} & 
+                              \textbf{\textcolor{green}{866\,000,-}} \\
+          \hline
+          \textbf{ROI}  & \textbf{\textcolor{green}{236\,\%}} & \textbf{\textcolor{green}{294\,\%}} & 
+                          \textbf{\textcolor{green}{320\,\%}} \\
+          \hline
+        \end{tabular}
+    \end{center}
+    
+    \begin{itemize}
+			\item Hned po prvním roce bude projekt v kladných číslech.
+		\end{itemize}
+\end{frame}
+
+\begin{frame}{Poděkování}
+	\begin{block}{Děkuji za pozornost.}
+	\end{block}
+\end{frame}
+
+\end{document}
