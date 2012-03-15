@@ -1,5 +1,0 @@
-\beamer@endinputifotherversion {3.10pt}
-\select@language {czech}
-\beamer@sectionintoc {1}{Rekapitulace}{3}{0}{1}
-\beamer@sectionintoc {2}{C\IeC {\'\i }le projektu}{4}{0}{2}
-\beamer@sectionintoc {3}{Anal\IeC {\'y}za rizik}{5}{0}{3}
