@@ -1,0 +1,106 @@
+\documentclass[10pt]{beamer}
+\usetheme[
+%%% options passed to the outer theme
+%    hidetitle,           % hide the (short) title in the sidebar
+%    hideauthor,          % hide the (short) author in the sidebar
+%    hideinstitute,       % hide the (short) institute in the bottom of the sidebar
+%    shownavsym,          % show the navigation symbols
+%    width=2cm,           % width of the sidebar (default is 2 cm)
+%    hideothersubsections,% hide all subsections but the subsections in the current section
+%    hideallsubsections,  % hide all subsections
+%%% options passed to the color theme
+%    lightheaderbg        % use a light header background
+  ]{aausidebar}
+  
+\usepackage[utf8]{inputenc}
+\usepackage[czech]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+% colored hyperlinks
+\newcommand{\chref}[2]{
+  \href{#1}{{\usebeamercolor[bg]{aau sidebar}#2}}
+}
+
+\title[Document Management System]{Document Management System}
+
+\subtitle{Analýza rizik}
+
+\author[Adam Činčura] {
+  Tomáš Čerevka, Adam Činčura, Jan Kadlec, Kamil Šnajdr \\
+  {\tt cerevtom, cincuada, kadlej16, snajdkam}
+}
+
+\institute[ČVUT FIT] {
+  Fakulta informačních technologií \\
+  České vysoké učení technické \\
+  Praha
+}
+\date[\today]{
+Projektové manažerství \\
+{\normalsize 16. března 2012}
+}
+
+\begin{document}
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+\begin{frame}{Osnova}{}
+	\tableofcontents
+\end{frame}
+
+\section{Rekapitulace}
+
+\begin{frame}{Rekapitulace}{Zvolené řešení}	
+	\begin{block}{Box.com}
+		\begin{itemize}
+			\item Komerční webová aplikace.
+			\item Snadné nasazení, používání i údržba.
+			\item Software as a Service.	
+		\end{itemize}
+	\end{block}
+	
+	\begin{block}{Přínosy}
+		\begin{itemize}
+			\item Automatické sledování stavu nevyřízených faktur.
+			\item Usnadnění práce účetnímu oddělení.
+			\item Zpřehlednění finanční situace firmy.
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\section{Cíle projektu}
+\begin {frame}{Stanovené cíle projektu}
+\begin {itemize}
+\item Zrychlení vnitropodnikových procesů (C1)
+\item Zpřehlednění finanční situace společnosti (C2)
+\item Snížení záteže finančního oddělení (C3)
+\item Včasné a bezchybné vyřizování faktur (C4)
+\item Ochrana životního prostředí digitalizací dokumentů (C5)
+\end{itemize}
+\end{frame}
+\section{Analýza rizik}
+\begin{frame}{Analýza rizik}
+\scriptsize 
+\begin{tabular}{| c | p{7em} | p{2em} |  p{10em} | p{10em}|}
+\hline
+  Cíl & \raggedright Nežádoucí stav  &  Stav rizika & Opatření k minimalizaci vzniku &  Opatření k minimalizaci dopadů \\  \hline & & & & \\[-1em] \hline
+  
+ C1 & \tiny Zaměstnanci nejsou schopni systém efektivně používat. & 4 & \tiny Před začátkem používání systému provedeme školení personálu. & \tiny Najmutí osoby se zkušenostmi se systémem. Opakované školení. \\ \hline
+ C1  & \tiny Nefunkčnost technického vybavení (čtečky, scannery). & 5 & \tiny Nakoupení náhradního hardware. & \tiny  \\ \hline
+ C1  & \tiny Nefunkční internetové připojení  & 5 & \tiny Pořízení záložní možnosti připojení pro nejdůležitější počítače. & \tiny Udržování offline zálohy. \\ \hline
+ C2  & \tiny Zaměstnanci neevidují všechny faktury v systému. & 4 & \tiny Důsledná kontrola zeměstnanců. & \tiny Archivace příchozích faktur i v papírové podobě. \\ \hline
+ C3  & \tiny Změstnanci odmítají se systémem pracovat. & 3 & \tiny Pozitivní motivace pro práci se systémem. & \tiny  \\ \hline
+ C4  & \tiny Dochází ke zpožďování plateb faktur. & 3 & \tiny Systém bude odpovědnou osobu informovat o fakturách s blížícím se datem splatnosti. & \tiny  \\ \hline
+ C5  & \tiny Nedošlo ke snížení spotřeby kancelářského materiálu. & 1 & \tiny Vyžadovat používání výhradně elektronické formy komunikace uvnitř firmy. & \tiny Riziko přimeme. \\ \hline
+
+\end{tabular}
+\end{frame}
+
+\begin{frame}{Poděkování}
+	\begin{block}{Děkuji za pozornost.}
+	\end{block}
+\end{frame}
+
+\end{document}

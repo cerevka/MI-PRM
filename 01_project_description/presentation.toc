@@ -1,0 +1,6 @@
+\beamer@endinputifotherversion {3.10pt}
+\select@language {czech}
+\beamer@sectionintoc {1}{Identifikace projektu}{3}{0}{1}
+\beamer@sectionintoc {2}{C\IeC {\'\i }lov\IeC {\'e} skupiny}{4}{0}{2}
+\beamer@sectionintoc {3}{V\IeC {\'y}choz\IeC {\'\i } podm\IeC {\'\i }nky}{5}{0}{3}
+\beamer@sectionintoc {4}{C\IeC {\'\i }le projektu}{6}{0}{4}

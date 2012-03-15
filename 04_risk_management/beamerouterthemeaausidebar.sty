@@ -1,0 +1,336 @@
+% The outer aausidebar theme is derived from the outer sidebar theme which has the following
+% copyright notice:
+% Copyright 2007 by Till Tantau
+% This file may be distributed and/or modified under the GNU Public License.
+%
+% See the file doc/licenses/LICENSE for more details.
+% <end of copyright notice>
+%
+% All the changes are (c) 2010-2011 by Jesper Kjær Nielsen <jkn@es.aau.dk> and are
+% provided under the same license. (GPLv3)
+%
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+%
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+%
+% You can find the GNU General Public License at <http://www.gnu.org/licenses/>.
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerouterthemeaausidebar}[2011/09/09 v0.3.1 An Unofficial AAU Beamer Theme]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Load required packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{tikz}
+\RequirePackage{calc}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Theme options and definitions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%theme options
+\newlength{\beamer@width}
+\setlength{\beamer@width}{2cm}
+
+\DeclareOptionBeamer{width}{\beamer@width=#1}
+\DeclareOptionBeamer{hideothersubsections}[]{\beamer@nav@subsectionstyle{show/show/hide}}
+\DeclareOptionBeamer{hideallsubsections}[]{\beamer@nav@subsectionstyle{hide}}
+\DeclareOptionBeamer{hidetitle}{\def\beamer@hidetitle{true}}
+\DeclareOptionBeamer{hideauthor}{\def\beamer@hideauthor{true}}
+\DeclareOptionBeamer{hideinstitute}{\def\beamer@hideinst{true}}
+\DeclareOptionBeamer{shownavsym}{\def\beamer@shownavsym{true}}
+\ProcessOptionsBeamer
+
+
+%the height of the header is 2.5 times the lineheight of the frame title
+\newlength{\beamer@height}
+\usebeamerfont{frametitle} %use the frame title font
+\setlength{\beamer@height}{2.5\baselineskip} 
+\reset@font %reset fonts
+%width of vertical bar separating the main text from the sidebar
+\newlength{\beamer@barwidth}
+\setlength{\beamer@barwidth}{2\beamer@height/15} %the bar width depends on the header height (by a factor of 7.5)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%beamer specific options
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mode<presentation>%refers to the first four modes (beamer,handout,second and trans). That is, to all modes except the article mode
+{
+  \ifbeamercolorempty[fg]{aau sidebar}{%
+    %define the aau sidebar color if it is not defined (which may be due to that the aausidebar color theme is not loaded)
+    \setbeamercolor{aau sidebar}{use={structure,palette sidebar primary},fg=palette sidebar primary.fg,bg=structure.fg}
+  }{%
+    %aau header is defined - nothing to do
+  }
+  \setbeamersize{sidebar width right=\beamer@width}
+  \setbeamersize{text margin left=0.5cm,text margin right=0.5cm}
+  
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %templates
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %headline
+  \defbeamertemplate*{headline}{aausidebar theme}{%
+    \aauheaderbackground%
+  }
+  
+  %frame title
+  \defbeamertemplate*{frametitle}{aausidebar theme}{%
+    \begin{minipage}[c][\beamer@height][c]{0.96\textwidth}
+      {\usebeamercolor[fg]{frametitle}\usebeamerfont{frametitle}\insertframetitle\par}%
+      {\usebeamercolor[fg]{framesubtitle}\usebeamerfont{framesubtitle}\insertframesubtitle\par}%
+    \end{minipage}
+  }
+  
+  %sidebar
+  \defbeamertemplate*{sidebar right}{aausidebar theme}{%
+    \aausidebarbackground%
+    \vspace{\beamer@height}%
+    \vspace{2\baselineskip}\par%
+    \ifx\beamer@hidetitle\undefined% insert short title
+      \vspace{-\baselineskip}
+      \hspace{0.05\beamer@width}%
+      {% 
+        \usebeamercolor[fg]{title in sidebar}
+        \usebeamerfont{title in sidebar}%
+        \insertshorttitle[width={0.9\beamer@width},center,respectlinebreaks]
+      }%
+      \hspace{0.05\beamer@width}
+      \vspace{2\baselineskip}\par%
+    \fi
+    \ifx\beamer@hideauthor\undefined% insert short author
+      \vspace{-\baselineskip}
+      \hspace{0.05\beamer@width}%
+      {%
+        \usebeamercolor[fg]{author in sidebar}
+        \usebeamerfont{author in sidebar}%
+        \insertshortauthor[width={0.9\beamer@width},center,respectlinebreaks]
+      }
+      \hspace{0.05\beamer@width}
+      \vspace{\baselineskip}\par%
+    \fi
+    \insertverticalnavigation{\beamer@width}%
+    \strut\vfill%
+    \ifx\beamer@hideinst\undefined% insert short institute
+      \vbox{\hspace{0.05\beamer@width}%
+      {%
+        \usebeamercolor[fg]{title in sidebar}
+        \usebeamerfont{subtitle in sidebar}%
+        \insertshortinstitute[width={0.9\beamer@width},center,respectlinebreaks]
+      }
+      \hspace{0.05\beamer@width}%
+      \vspace*{\baselineskip}
+      }%
+    \fi
+    \ifx\beamer@shownavsym\undefined% insert navigation symbols
+      %do nothing
+    \else
+      \vspace*{-2\baselineskip}
+      \llap{\usebeamertemplate***{navigation symbols}\hskip0.4cm}
+      \vskip2pt
+    \fi
+  }
+
+  % current section in the sidebar
+  \defbeamertemplate*{section in sidebar}{aausidebar theme}{%
+    \vbox{%
+      \vskip1ex% add some extra space when inserting a new section
+      \sidebarnavitem{4pt}{section in sidebar}{%
+        \sidebarcurframe{-4pt}{\insertframenumber}%
+        \insertsectionhead
+      }
+    }
+  }
+
+  % all section in the sidebar but the current
+  \defbeamertemplate*{section in sidebar shaded}{aausidebar theme}{%
+    \vbox{%
+      \vskip1ex% add some extra space when inserting a new section
+      \sidebarnavitem{4pt}{section in sidebar shaded}{\insertsectionhead}
+    }
+  }
+
+  % current subsection in the sidebar
+  \defbeamertemplate*{subsection in sidebar}{aausidebar theme}{%
+    \sidebarnavitem{6pt}{subsection in sidebar}{
+      \sidebarcurframe{-6pt}{\insertframenumber}%
+      \insertsubsectionhead
+    }
+  }
+
+  % all subsection in the sidebar but the current
+  \defbeamertemplate*{subsection in sidebar shaded}{aausidebar theme}{%
+    \sidebarnavitem{6pt}{subsection in sidebar shaded}{\insertsubsectionhead}
+  }
+
+  % current subsubsection in the sidebar
+  \defbeamertemplate*{subsubsection in sidebar}{aausidebar theme}{%
+    \sidebarnavitem{8pt}{subsubsection in sidebar}{
+      \sidebarcurframe{-8pt}{\insertframenumber}%
+      \insertsubsubsectionhead
+    }  
+  }
+
+  % all subsubsection in the sidebar but the current
+  \defbeamertemplate*{subsubsection in sidebar shaded}{aausidebar theme}{%
+    \sidebarnavitem{8pt}{subsubsection in sidebar shaded}{\insertsubsubsectionhead} 
+  }
+
+  \ifx\beamer@shownavsym\undefined% insert navigation symbols
+    \setbeamertemplate{navigation symbols}{%
+      %disable navigation symbols
+    }
+  \fi
+
+  % Define images
+  \pgfdeclareimage[width=\paperwidth]{uaBackgroundLight}{backgroundtitle}
+
+
+  % Background.  
+  \defbeamertemplate*{background canvas}{ua theme}
+  { 
+    \ifnum\c@framenumber=1%
+      \pgfuseimage{uaBackgroundLight}%
+    \fi  
+  }
+
+}%end of beamer specific options
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Macros used in the theme 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% the fancy header background
+\newcommand{\aauheaderbackground}[0]{%
+  \begin{tikzpicture}[overlay]
+    \coordinate (UL) at (0,0); %upper left of slide
+    \coordinate (IS) at (\paperwidth-\beamer@width-\beamer@barwidth/2,-\beamer@height); %intersection between center of vertical bar 
+    \begin{scope}[cm={1,0,0,1,(IS)},x=1pt,y=1pt]
+      \begin{scope}[xscale=\beamer@barwidth/80,yscale=\beamer@height/622.52,cm={1,0,0,1,(-910,-2296.5705)}]
+        {\usebeamercolor{frametitle}%
+        \path[fill=bg,nonzero rule] {[xshift=-10] %the shift is added in order to hide it under the aau logo
+          (1139.4351,2919.0905) .. controls
+          (1074.6151,2897.1405) and (1004.0351,2872.7005) .. (964.6451,2805.1105) ..
+          controls (937.4451,2746.2405) and (876.3251,2696.6305) .. (819.4951,2670.6805)
+          .. controls (776.0751,2637.2705) and (745.6451,2591.1205) ..
+          (752.6251,2535.9805) .. controls (769.5951,2469.1505) and (814.2251,2415.2805)
+          .. (808.7151,2342.9605) .. controls (805.2251,2326.2605) and
+          (799.2651,2309.0305) .. (788.2851,2298.5705)} %2296.8205
+          -| (UL); %I have added this line
+        }
+        {\usebeamercolor{aau sidebar}%
+        \path[fill=bg,nonzero rule] (1139.4351,2919.0905) .. controls
+          (1074.6151,2897.1405) and (1004.0351,2872.7005) .. (964.6451,2805.1105) ..
+          controls (937.4451,2746.2405) and (876.3251,2696.6305) .. (819.4951,2670.6805)
+          .. controls (776.0751,2637.2705) and (745.6451,2591.1205) ..
+          (752.6251,2535.9805) .. controls (769.5951,2469.1505) and (814.2251,2415.2805)
+          .. (808.7151,2342.9605) .. controls (805.2251,2326.2605) and
+          (799.2651,2309.0305) .. (788.2851,2296.5705) --  (564.8441,2296.5705)
+          -| (UL |- 564.8441,2308.8205) %2298.8205
+          -- (564.8441,2308.8205) ..
+          controls (608.7351,2348.4605) and (637.9051,2411.5505) ..
+          (624.9251,2481.3705) .. controls (609.4651,2555.4605) and
+          (607.4651,2645.7205) .. (667.3151,2701.1205) .. controls
+          (714.2151,2753.7305) and (788.2851,2754.4605) .. (847.6351,2763.4605) ..
+          controls (913.9951,2784.1705) and (933.4451,2862.7205) ..
+          (997.3051,2885.6705) .. controls (1029.7251,2899.1505) and
+          (1065.3851,2908.8505) .. (1101.5451,2915.3405) .. controls
+          (1112.7751,2918.3405) and (1126.7351,2919.0905) .. (1139.4351,2920.5905) --
+          (1139.4351,2919.0905);
+        \path[fill=bg,nonzero rule] (1217.9451,2913.1105) .. controls
+          (1170.7951,2877.4205) and (1141.1351,2827.8005) .. (1140.6051,2769.4405) ..
+          controls (1139.1151,2724.0505) and (1140.3651,2675.6605) ..
+          (1116.1851,2638.7605) .. controls (1105.4651,2617.0605) and
+          (1089.5051,2584.3805) .. (1110.1951,2562.6905) .. controls
+          (1158.8451,2524.5205) and (1228.4451,2544.2205) .. (1271.3251,2495.8405) ..
+          controls (1293.7451,2474.9105) and (1301.4851,2444.7105) ..
+          (1296.2751,2413.5205) .. controls (1292.7751,2399.3205) and
+          (1289.2651,2384.0905) .. (1280.2851,2372.6405) -- (1094.2351,2372.6405) ..
+          controls (1095.7251,2413.0305) and (1062.3151,2441.4705) ..
+          (1033.3751,2466.9005) .. controls (1003.2051,2491.1105) and
+          (966.5451,2518.2905) .. (961.0851,2557.4505) .. controls (965.2851,2593.8605)
+          and (999.4651,2617.8005) .. (1017.4151,2648.4805) .. controls
+          (1055.5851,2694.8705) and (1065.5651,2755.9805) .. (1090.9851,2808.8505) ..
+          controls (1116.6751,2857.7205) and (1170.7951,2890.4005) ..
+          (1217.9451,2913.1105);
+        }
+      \end{scope}
+    \end{scope}
+  \end{tikzpicture}%
+}
+
+% the fancy background in the sidebar
+\newcommand{\aausidebarbackground}[0]{%
+  \begin{tikzpicture}[overlay]
+    \coordinate (LR) at (\beamer@width,-\paperheight); %lower right of slide
+    \coordinate (UL) at (-\paperwidth+\beamer@width,0); %upper left of slide
+    \coordinate (IS) at (-\beamer@barwidth/2,-\beamer@height); %intersection between center of vertical bar and bottom of header
+    {\usebeamercolor{normal text} \filldraw[draw=bg,fill=bg] (0,0) rectangle (\beamer@width,-0.95\beamer@height);}
+    \begin{scope}[cm={1,0,0,1,(IS)},x=1pt,y=1pt]
+      \begin{scope}[xscale=\beamer@barwidth/80,yscale=\beamer@height/622.52,cm={1,0,0,1,(-910,-2296.5705)}]
+        {\usebeamercolor{palette sidebar primary}
+          %set the background color of the header to the text background color
+          %this is only shown if the user decides to have a sidebar color different from the text background
+          \fill[fill=bg] (UL -| LR) -- (1187.4351,2918.3405) .. controls
+          (1123.8151,2888.9105) and (1062.9651,2832.7805) .. (1042.2651,2764.9405) ..
+          controls (1030.5551,2699.1105) and (985.9251,2647.2305) ..
+          (944.2451,2593.8605) .. controls (929.0451,2571.4105) and (926.5551,2535.7505)
+          .. (943.5151,2513.3105) .. controls (983.1651,2456.9605) and
+          (1058.4851,2418.2905) .. (1050.0151,2342.9605) .. controls
+          (1046.0151,2326.5105) and (1040.0351,2311.0505) .. (1031.8151,2296.5705) -| (UL -| LR);
+        }
+        {\usebeamercolor{aau sidebar}%
+          \path[fill=fg,nonzero rule] (1187.4351,2918.3405) .. controls
+            (1123.8151,2888.9105) and (1062.9651,2832.7805) .. (1042.2651,2764.9405) ..
+            controls (1030.5551,2699.1105) and (985.9251,2647.2305) ..
+            (944.2451,2593.8605) .. controls (929.0451,2571.4105) and (926.5551,2535.7505)
+            .. (943.5151,2513.3105) .. controls (983.1651,2456.9605) and
+            (1058.4851,2418.2905) .. (1050.0151,2342.9605) .. controls
+            (1046.0151,2326.5105) and (1040.0351,2311.0505) .. (1031.8151,2296.5705)
+            to[out=240,in=90] (950,2050) -- (950,2100 |- LR) -| % I have added this line
+            (870,2000)   to [out=90,in=245] % I have added this line
+            (839.2651,2296.5705) .. controls (842.7551,2305.2905) and (846.9851,2314.0305)
+            .. (849.9951,2323.2705) .. controls (867.4351,2396.8405) and
+            (814.0651,2451.9405) .. (793.8551,2515.5305) .. controls (776.8951,2559.9305)
+            and (788.1351,2612.3005) .. (825.0551,2643.2305) .. controls
+            (869.1951,2679.6605) and (926.8051,2703.3505) .. (958.7151,2750.4805) ..
+            controls (987.1651,2789.4005) and (1006.0951,2838.2805) ..
+            (1051.4951,2864.4805) .. controls (1094.1351,2890.1605) and
+            (1139.0351,2906.6205) .. (1187.4351,2919.8305) -- (1187.4351,2918.3405);
+          \coordinate (MBVL) at (910,2100 |- LR);%middle of bottom of vertical bar
+        }
+      \end{scope}
+    \end{scope}
+    {%
+      \usebeamercolor{palette sidebar primary}%
+      \usebeamercolor{aau sidebar}%
+      \usebeamerfont{subsection in sidebar}%
+      \node[fill=palette sidebar primary.bg,draw=aau sidebar.fg,circle,very thick,minimum width=4mm] at ([yshift=2mm]MBVL) {{\usebeamercolor[fg]{subsection in sidebar}\inserttotalframenumber}};
+    }
+  \end{tikzpicture}%
+}
+
+% sidebar navigation item  
+\newcommand{\sidebarnavitem}[3]{%
+  \begin{beamercolorbox}[wd=\beamer@width,leftskip=#1,rightskip=1ex plus1fil,vmode]{#2}
+    \vbox{}% insert a blank line
+    #3\par%
+    \vbox{}% insert a blank line
+    \vskip-1.5ex%
+  \end{beamercolorbox}
+}
+
+% current frame number
+\newcommand{\sidebarcurframe}[2]{%
+  \begin{tikzpicture}[overlay]
+  {%
+    \usebeamercolor{palette sidebar primary}%
+    \usebeamercolor{aau sidebar}%
+    \node[fill=palette sidebar primary.bg,draw=aau sidebar.fg,circle,minimum width=3.5mm,thick] at (#1-\beamer@barwidth/2,0.8ex) {{\fontsize{4}{5}\selectfont{\usebeamercolor[fg]{subsection in sidebar}#2}}};
+  }
+  \end{tikzpicture}%
+}
+
+\mode<all>
