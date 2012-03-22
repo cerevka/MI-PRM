@@ -1,0 +1,251 @@
+\documentclass[10pt,xcolor=table]{beamer}
+\usetheme[
+%%% options passed to the outer theme
+%    hidetitle,           % hide the (short) title in the sidebar
+%    hideauthor,          % hide the (short) author in the sidebar
+%    hideinstitute,       % hide the (short) institute in the bottom of the sidebar
+%    shownavsym,          % show the navigation symbols
+%    width=2cm,           % width of the sidebar (default is 2 cm)
+%    hideothersubsections,% hide all subsections but the subsections in the current section
+%    hideallsubsections,  % hide all subsections
+%%% options passed to the color theme
+%    lightheaderbg        % use a light header background
+  ]{aausidebar}
+  
+\usepackage[utf8]{inputenc}
+\usepackage[czech]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{array} 
+\usepackage{varwidth}
+
+% colored hyperlinks
+\newcommand{\chref}[2]{
+  \href{#1}{{\usebeamercolor[bg]{aau sidebar}#2}}
+}
+
+\title[Document Management System]{Document Management System}
+
+\subtitle{Procesy, vstupy/výstupy, harmonogram}
+
+\author[Tomáš Čerevka] {
+  Tomáš Čerevka, Adam Činčura, Jan Kadlec, Kamil Šnajdr \\
+  {\tt cerevtom, cincuada, kadlej16, snajdkam}
+}
+
+\institute[ČVUT FIT] {
+  Fakulta informačních technologií \\
+  České vysoké učení technické \\
+  Praha
+}
+\date[\today]{
+Projektové manažerství \\
+{\normalsize 24. února 2012}
+}
+
+\begin{document}
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+\begin{frame}{Osnova}{}
+	\tableofcontents
+\end{frame}
+
+\section{Rekapitulace}
+
+\begin{frame}{Rekapitulace}	
+	\begin{itemize}
+		\item Malá firma specializující se na audit.
+		\item Problémy
+			\begin{itemize}
+				\item Pozdní placení faktur.
+				\item Ztrácení faktur.
+				\item Papírování.
+				\item Neefektivní učetní oddělení.
+			\end{itemize}
+		\item Řešení - box.com
+			\begin{itemize}
+				\item Komerční webová aplikace.
+				\item Snadné nasazení, používání i údržba.
+				\item "Software as service."
+			\end{itemize}
+	\end{itemize}	
+\end{frame}
+
+\section{Procesní schéma}
+
+\begin{frame}{Procesní schéma}
+	\resizebox{10cm}{!}{
+		\input{process_schema.tex}
+	}
+\end{frame}
+
+\section{Procesy}
+
+\begin{frame}{Procesy 1/2}
+	\definecolor{tableheader}{RGB}{0, 105, 168}
+	\definecolor{evenrow}{RGB}{140, 201, 240}
+	\rowcolors{2}{evenrow}{white}
+	
+	\newcolumntype{M}{>{\begin{varwidth}{1.7cm}}l<{\end{varwidth}}} %M is for Maximal column
+	\setlength{\extrarowheight}{1.5pt}
+
+\begin{table}[t]\footnotesize
+	\resizebox{10cm}{!}{
+		\begin{tabular}{| M | M | M | M | c | c |} 
+			\hline	
+			\cellcolor{tableheader}\color{white} \textbf{Proces}	&	
+			\cellcolor{tableheader}\color{white} \textbf{Vstupy}	& 
+			\cellcolor{tableheader}\color{white} \textbf{Popis} & 
+			\cellcolor{tableheader}\color{white} \textbf{Výstupy} & 
+			\cellcolor{tableheader}\color{white} \textbf{Zodpovědnost} \\
+			\hline	
+			Stanovení cílů & 
+			Potřeba zlepšení práce s dokumenty & 
+			Na základě potřeb se stanoví cíle projektu &
+			Cíle projektu	& 
+			Vedení \\
+			\hline	
+			
+			Sestavení řešitelského týmu & 
+			Cíle projektu & 
+			Dle požadavků se sestaví řešitelský tým & 
+			Řešitelský tým & 
+			Vedení \\
+			\hline				
+			
+			Analýza proveditelnosti & 
+			Cíle projektu & 
+			Projekt se analyzuje a vytvoří se studie proveditelnosti & 
+			Studie proveditelnosti & 
+			Analytik \\
+			\hline					
+				
+			
+			Výběr nejlepšího řešení & 
+			Studie proveditelnosti & 
+			Z navrhnutých řešení se vybere to nejlepší & 
+			Vybrané řešení & 
+			Analytik \\
+			\hline	
+			
+			Objednání služeb & 
+			Finance a vybrané řešení & 
+			Na box.com se objednají služby & 
+			Vybrané řešení & 
+			Vedoucí týmu \\
+			\hline				
+		\end{tabular}
+		}
+	\end{table}	
+
+\end{frame}
+
+\begin{frame}{Procesy 2/2}
+	\definecolor{tableheader}{RGB}{0, 105, 168}
+	\definecolor{evenrow}{RGB}{140, 201, 240}
+	\rowcolors{2}{evenrow}{white}
+	
+	\newcolumntype{M}{>{\begin{varwidth}{1.7cm}}l<{\end{varwidth}}} %M is for Maximal column
+	\setlength{\extrarowheight}{1.5pt}
+
+\begin{table}[t]\footnotesize
+	\resizebox{10cm}{!}{
+		\begin{tabular}{| M | M | M | M | c | c |} 
+			\hline	
+			\cellcolor{tableheader}\color{white} \textbf{Proces}	&	
+			\cellcolor{tableheader}\color{white} \textbf{Vstupy}	& 
+			\cellcolor{tableheader}\color{white} \textbf{Popis} & 
+			\cellcolor{tableheader}\color{white} \textbf{Výstupy} & 
+			\cellcolor{tableheader}\color{white} \textbf{Zodpovědnost} \\
+			\hline	
+			Pořízení hardwaru & 
+			Finance & 
+			Pořídí se potřebné scannery a další potřebný HW & 
+			Hardware & 
+			Technik \\
+			\hline				
+			
+			Integrace & 
+			Objednané služby, hardware & 
+			Vnitřní systém se napojí na objedné služby &
+			Napojené služby	& 
+			Vývojáři \\
+			\hline	
+			
+			Testování & 
+			Napojené služby & 
+			Napojení služeb na systém se otestuje & 
+			Výsledky testů & 
+			Testeři \\
+			\hline				
+				
+			
+			Školení & 
+			Hotový a připravený systém & 
+			Zaměstnanci budou zaškoleni do systému & 
+			Vyškolení zaměstnanci & 
+			Školitel \\
+			\hline	
+			
+			Nasazení & 
+			Hotové řešení, proškolení uživatelé & 
+			Nasazení řešení do ostrého provozu & 
+			Ostrý provoz & 
+			Vedoucí týmu \\
+			\hline				
+		\end{tabular}
+		}
+	\end{table}	
+
+\end{frame}
+
+
+\section{Harmonogram}
+
+\begin{frame}{Harmonogram}
+	\definecolor{tableheader}{RGB}{0, 105, 168}
+	\definecolor{evenrow}{RGB}{140, 201, 240}
+	\rowcolors{2}{evenrow}{white}
+
+	\newcolumntype{M}{>{\begin{varwidth}{1.7cm}}l<{\end{varwidth}}} %M is for Maximal column
+
+	\begin{table}		
+		\begin{tabular}{| l | l |}
+		\hline
+		\cellcolor{tableheader}\color{white} \textbf{Proces} & \cellcolor{tableheader}\color{white} \textbf{Doba} \\
+		\hline
+		Stanovení cílů & 5 dní \\
+		\hline
+		Sestavení řešitelského týmu & 1 den \\
+		\hline
+		Analýza proveditelnosti & 1 týden \\
+		\hline
+		Výběr nejlepšího řešení & 1 den \\
+		\hline
+		Objednání služeb & 1 den \\
+		\hline
+		Pořízení hardwaru & 1 týden \\
+		\hline
+		Integrace & 20 dní \\
+		\hline
+		Testování & 5 dní \\
+		\hline
+		Školení & 1 den \\
+		\hline
+		Nasazení & 1 den \\		
+		\hline
+		\end{tabular}		
+	\end{table}
+
+	Celkem: cca 2 měsíce (pracovních dní)
+
+\end{frame}
+
+\begin{frame}{Poděkování}
+	\begin{block}{Děkuji za pozornost.}
+	\end{block}
+\end{frame}
+
+\end{document}
