@@ -1,0 +1,189 @@
+\documentclass[10pt,hyperref={unicode=true}]{beamer}
+\usetheme[
+%%% options passed to the outer theme
+%    hidetitle,           % hide the (short) title in the sidebar
+%    hideauthor,          % hide the (short) author in the sidebar
+%    hideinstitute,       % hide the (short) institute in the bottom of the sidebar
+%    shownavsym,          % show the navigation symbols
+%    width=2cm,           % width of the sidebar (default is 2 cm)
+%    hideothersubsections,% hide all subsections but the subsections in the current section
+%    hideallsubsections,  % hide all subsections
+%%% options passed to the color theme
+%    lightheaderbg        % use a light header background
+  ]{aausidebar}
+  
+\usepackage[utf8]{inputenc}
+\usepackage[czech]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\hypersetup{colorlinks=true,linkcolor=,urlcolor=blue} 
+
+% colored hyperlinks
+\newcommand{\chref}[2]{
+  \href{#1}{{\usebeamercolor[bg]{aau sidebar}#2}}
+}
+
+\title[Document Management System]{Document Management System}
+
+\subtitle{Poptávka}
+
+\author[Kamil Šnajdr] {
+  Tomáš Čerevka, Adam Činčura, Jan Kadlec, Kamil Šnajdr \\
+  {\tt cerevtom, cincuada, kadlej16, snajdkam}
+}
+
+\institute[ČVUT FIT] {
+  Fakulta informačních technologií \\
+  České vysoké učení technické \\
+  Praha
+}
+\date[\today]{
+Projektové manažerství \\
+{\normalsize 12. dubna 2012}
+}
+
+\begin{document}
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+\begin{frame}{Osnova}
+	\tableofcontents
+\end{frame}
+
+\section{O nás}
+
+\begin{frame}{O nás}	
+		
+  \begin{block}{Informace o společnosti}
+    \begin{itemize}
+	    \item Malá firma specializující se na audit.
+	    \item 30 zaměstnanců.
+	  \end{itemize}
+	\end{block}
+			
+	\begin{block}{Problémy}
+		\begin{itemize}
+			\item Pozdní placení faktur.
+			\item Zbytečné papírování.
+			\item Neefektivní účetní oddělení.
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\section{Předmět poptávky}
+
+\begin{frame}{Předmět poptávky}
+  \begin{block}{Systém pro evidenci a správu faktur}
+		\begin{itemize}
+			\item Přístup přes webové rozhraní.
+      \item	Intuitivní a přehledné ovládání.
+			\item Všechna data uložena na serverech dodavatele.
+			\item Dodavatel musí zaručit bezpečnost dat a maximální možnou dostupnost služby.
+		\end{itemize}
+  \end{block}
+	
+  \begin{block}{Požadované funkce}
+		\begin{itemize}
+			\item Upozorňování na blížící se datum splatnosti faktury.
+      \item	Vyhledávání faktur dle zadaných parametrů.
+			\item Automatické generování reportů.
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\section{Kritéria výběru}
+
+\begin{frame}{Kritéria výběru}	
+  Dodavatel musí mít dobré reference a bohaté zkušenosti s vývojem a provozováním 
+  webových aplikací. Dále požadujeme působnost v oboru alespoň 5 let a aby mezi jeho
+  zákazníky patřila některá renomovaná firma.
+  \vspace{5mm}
+  
+  \begin{block}{Váha jednotlivých kritérií}
+		\begin{itemize}
+			\item Reference firmy, zkušenosti, spolehlivost. (30\%)
+			\item Splnění požadavků. (30\%)
+      \item Cena projektu. (20\%)
+      \item Časový plán vytvoření systému. (20\%)
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\section{Harmonogram dodání a částka plnění}
+
+\begin{frame}{Harmonogram dodání a částka plnění}
+  \begin{block}{Harmonogram}    \small
+      \begin{tabular}{ l r }
+        Uzávěrka přihlášek k výběrovému řízení  & 1.\,5.\,2012 \\
+        Výběr vítězné nabídky a uzavření smlouvy  & do 16.\,5.\,2012 \\
+        Návrh uživatelského rozhraní  & do 1.\,6.\,2012 \\
+        Vytvoření funkčního prototypu  & do 1.\,7.\,2012 \\
+        Předání hotového produktu  & do 1.\,8.\,2012 \\
+      \end{tabular}
+  \end{block}
+  
+  \begin{block}{Částka plnění}   \small
+      \begin{tabular}{ l l }
+        Vývoj produktu & 200\,000 Kč \\
+        Školení uživatelů   & 15\,000 Kč \\
+        Poplatky za provoz serverů & 20\,000 Kč/měsíčně \\
+      \end{tabular}
+  \end{block}
+\end{frame}
+
+\section{Obchodní podmínky}
+
+\begin{frame}{Obchodní podmínky} 
+		\begin{itemize}
+			\item Každých 14 dní reporty v předepsané formě.
+			\item Požadujeme dodání zdrojových kódů a dokumentace k systému.
+      \item Při nesplnění podmínek si zadavatel vyhrazuje právo odstoupit od smlouvy.
+      \item V případě nedodržení termínů bude za každý den zpoždění účtována pokuta ve výši 1\% ceny projektu.
+      \item V případě nedostupnosti systému více než 4 hodiny v měsíci smluvní pokuta 10\,000 Kč.
+		\end{itemize}
+\end{frame}
+
+\section{Platební podmínky}
+
+\begin{frame}{Platební podmínky} 
+		\begin{itemize}
+			\item Veškeré platby probíhají bezhotovostním stykem.
+			\item Záloha 20\% do 14 dnů od uzavření smlouvy.
+      \item 60\% z celkové částky do 14 dnů od převzetí hotového produktu.
+      \item 20\% tvoří zádržné – při bezproblémové funkci systému bude splaceno do 6 měsíců od převzetí produktu.
+      \item Měsíční poplatky budou placeny na základě došlých faktur.
+		\end{itemize}
+\end{frame}
+
+\section{Místo doručení nabídek}
+
+\begin{frame}{Místo doručení nabídek} 
+		\begin{itemize}
+			\item Nabídky zasílejte e-mailem na adresu:
+		\end{itemize}
+		\begin{center} \footnotesize
+      \href{mailto:big.boss@nasefirma.cz}{big.boss@nasefirma.cz} \\
+    \end{center}
+		
+		\begin{itemize}
+			\item Nebo v papírové podobě na adresu:
+		\end{itemize}
+		\begin{center}  \footnotesize
+      Naše firma s.r.o. \\
+      Auditorská 19     \\
+      170 00 \hspace{1mm} Praha 7 \\
+    \end{center}
+    
+    \begin{itemize}
+			\item Nabídky přijímáme do 1.\,5.\,2012
+		\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Poděkování}
+	\begin{block}{Děkuji za pozornost.}
+	\end{block}
+\end{frame}
+
+\end{document}
